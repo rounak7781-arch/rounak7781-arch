@@ -1,0 +1,84 @@
+name: Update Projects
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 0 * * 1"
+
+permissions:
+  contents: write
+
+jobs:
+  update-projects:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Update Projects section
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const fs = require('fs');
+
+            const username = 'rounak7781-arch';
+            const profileRepo = 'rounak7781-arch';
+
+            const { data: repos } = await github.rest.repos.listForUser({
+              username,
+              type: 'owner',
+              sort: 'updated',
+              direction: 'desc',
+              per_page: 100
+            });
+
+            const projects = repos
+              .filter(repo =>
+                !repo.fork &&
+                !repo.archived &&
+                repo.name !== profileRepo &&
+                repo.description
+              )
+              .slice(0, 6);
+
+            let projectSection = `## 🚀 Latest Projects;
+
+            if (projects.length === 0) {
+              projectSection += `No public projects available yet.`;
+            } else {
+              for (const repo of projects) {
+                projectSection += `### [${repo.name}](https://github.com/${username}/${repo.name})\n`;
+                projectSection += `${repo.description}\n\n`;
+                projectSection += `⭐ ${repo.stargazers_count} &nbsp; • &nbsp; 🍴 ${repo.forks_count}\n\n`;
+              }
+            }
+
+            const startMarker = '<!-- PROJECTS:START -->';
+            const endMarker = '<!-- PROJECTS:END -->';
+
+            let readme = fs.readFileSync('README.md', 'utf8');
+
+            const block =
+              `${startMarker}\n${projectSection}${endMarker}`;
+
+            const regex = new RegExp(
+              `${startMarker}[\\s\\S]*?${endMarker}`,
+              'm'
+            );
+
+            if (regex.test(readme)) {
+              readme = readme.replace(regex, block);
+            } else {
+              readme += `\n\n---\n\n${block}\n`;
+            }
+
+            fs.writeFileSync('README.md', readme);
+
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet || git commit -m "Update latest projects"
+          git push
