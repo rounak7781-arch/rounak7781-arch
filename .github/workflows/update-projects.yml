@@ -25,13 +25,15 @@ jobs:
             const username = 'rounak7781-arch';
             const profileRepo = 'rounak7781-arch';
 
-            const { data: repos } = await github.rest.repos.listForUser({
-              username,
+            const response = await github.rest.repos.listForUser({
+              username: username,
               type: 'owner',
               sort: 'updated',
               direction: 'desc',
               per_page: 100
             });
+
+            const repos = response.data;
 
             const projects = repos
               .filter(repo =>
@@ -42,15 +44,16 @@ jobs:
               )
               .slice(0, 6);
 
-            let projectSection = `## 🚀 Latest Projects;
+            let projectSection = '## 🚀 Latest Projects\n\n';
 
             if (projects.length === 0) {
-              projectSection += `No public projects available yet.`;
+              projectSection += 'No public projects available yet.\n';
             } else {
               for (const repo of projects) {
-                projectSection += `### [${repo.name}](https://github.com/${username}/${repo.name})\n`;
-                projectSection += `${repo.description}\n\n`;
-                projectSection += `⭐ ${repo.stargazers_count} &nbsp; • &nbsp; 🍴 ${repo.forks_count}\n\n`;
+                projectSection += '### [' + repo.name + '](' + repo.html_url + ')\n';
+                projectSection += repo.description + '\n\n';
+                projectSection += '⭐ ' + repo.stargazers_count;
+                projectSection += ' &nbsp; • &nbsp; 🍴 ' + repo.forks_count + '\n\n';
               }
             }
 
@@ -59,18 +62,21 @@ jobs:
 
             let readme = fs.readFileSync('README.md', 'utf8');
 
-            const block =
-              `${startMarker}\n${projectSection}${endMarker}`;
+            const start = readme.indexOf(startMarker);
+            const end = readme.indexOf(endMarker);
 
-            const regex = new RegExp(
-              `${startMarker}[\\s\\S]*?${endMarker}`,
-              'm'
-            );
+            const newBlock =
+              startMarker + '\n' +
+              projectSection +
+              endMarker;
 
-            if (regex.test(readme)) {
-              readme = readme.replace(regex, block);
+            if (start !== -1 && end !== -1 && end > start) {
+              readme =
+                readme.substring(0, start) +
+                newBlock +
+                readme.substring(end + endMarker.length);
             } else {
-              readme += `\n\n---\n\n${block}\n`;
+              readme += '\n\n---\n\n' + newBlock + '\n';
             }
 
             fs.writeFileSync('README.md', readme);
