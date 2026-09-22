@@ -241,3 +241,16 @@ Currently learning Japanese with a focus on beginner-level reading, writing, voc
 ## 🐍 Contribution Snake
 
 ![Contribution Snake](https://raw.githubusercontent.com/rounak7781-arch/rounak7781-arch/main/dist/github-contribution-grid-snake.svg)
+
+
+---
+
+<!-- PROJECTS:START -->
+## 🚀 Latest Projects
+
+### [caramelldansen](https://github.com/rounak7781-arch/caramelldansen)
+A Python-based colorful ASCII video player that converts video frames into animated ASCII art while playing synchronized audio
+
+⭐ 0 &nbsp; • &nbsp; 🍴 0
+
+<!-- PROJECTS:END -->
