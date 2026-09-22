@@ -215,7 +215,9 @@ Currently learning Japanese with a focus on beginner-level reading, writing, voc
 | 🔧 **Software Engineering** | Development Practices & Project Building |
 | 🏆 **Hackathons** | Building Real-World Solutions |
 ---
+### 💻 Top Languages
 
+![Top Languages](https://raw.githubusercontent.com/rounak7781-arch/rounak7781-arch/main/dist/top-languages.svg)
 ## 🔨 What I'm Working On
 
 - 🏥 Building a **Patient Case-Taking Software** concept for HealthTech
