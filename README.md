@@ -236,3 +236,6 @@ Currently learning Japanese with a focus on beginner-level reading, writing, voc
 - 🚀 Working toward a career in **Software Development**
 - 🤖 Exploring **AI-powered software development**
 - 📈 Continuously improving my programming and problem-solving skills
+## 🐍 Contribution Snake
+
+![Contribution Snake](https://raw.githubusercontent.com/rounak7781-arch/rounak7781-arch/main/dist/github-contribution-grid-snake.svg)
