@@ -3,6 +3,14 @@
 <text x="40" y="55" fill="#ffffff" font-size="28" font-family="Arial" font-weight="bold">💻 Top Languages</text>
 <text x="40" y="105" fill="#c9d1d9" font-size="18" font-family="Arial">Python</text>
 <rect x="180" y="88" width="450" height="20" rx="10" fill="#21262d"/>
-<rect x="180" y="88" width="500.0" height="20" rx="10" fill="#3572A5"/>
-<text x="645" y="105" fill="#8b949e" font-size="16" font-family="Arial" text-anchor="end">100.0%</text>
+<rect x="180" y="88" width="272.2368421052631" height="20" rx="10" fill="#3572A5"/>
+<text x="645" y="105" fill="#8b949e" font-size="16" font-family="Arial" text-anchor="end">54.4%</text>
+<text x="40" y="147" fill="#c9d1d9" font-size="18" font-family="Arial">HTML</text>
+<rect x="180" y="130" width="450" height="20" rx="10" fill="#21262d"/>
+<rect x="180" y="130" width="129.27631578947367" height="20" rx="10" fill="#e34c26"/>
+<text x="645" y="147" fill="#8b949e" font-size="16" font-family="Arial" text-anchor="end">25.9%</text>
+<text x="40" y="189" fill="#c9d1d9" font-size="18" font-family="Arial">JavaScript</text>
+<rect x="180" y="172" width="450" height="20" rx="10" fill="#21262d"/>
+<rect x="180" y="172" width="98.48684210526316" height="20" rx="10" fill="#f1e05a"/>
+<text x="645" y="189" fill="#8b949e" font-size="16" font-family="Arial" text-anchor="end">19.7%</text>
 </svg>
