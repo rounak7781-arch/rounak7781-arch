@@ -248,6 +248,11 @@ Currently learning Japanese with a focus on beginner-level reading, writing, voc
 <!-- PROJECTS:START -->
 ## 🚀 Latest Projects
 
+### [deep_shit](https://github.com/rounak7781-arch/deep_shit)
+its an feedback webpage 
+
+⭐ 0 &nbsp; • &nbsp; 🍴 0
+
 ### [caramelldansen](https://github.com/rounak7781-arch/caramelldansen)
 A Python-based colorful ASCII video player that converts video frames into animated ASCII art while playing synchronized audio
 
